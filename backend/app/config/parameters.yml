@@ -1,0 +1,23 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: localhost
+    database_port: null
+    database_name: hackathon
+    database_user: hackathon
+    database_password: 12345678
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: df16885667f65ed1e62b43d790221871836876a8
+    web_consul_ebay_api:
+        auth_token: 'YOUR TOKEN FOR TESTING API CALLS'
+        application_keys:
+            sandbox:
+                dev_id: 'd1f44741-9a1f-4d0d-acb3-31fa07ba0dd5'
+                app_id: 'eBayc1a47-d174-4cdf-b717-e905416db46'
+                cert_id: 'cba62b9e-7358-4fa1-82c1-5b444b471424'
+            production:
+                dev_id: 'd1f44741-9a1f-4d0d-acb3-31fa07ba0dd5'
+                app_id: 'eBayc1a47-d174-4cdf-b717-e905416db46'
+                cert_id: 'cba62b9e-7358-4fa1-82c1-5b444b471424'

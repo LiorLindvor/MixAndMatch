@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity repository-class="Hack\Bundle\ProxyBundle\Entity\UserStatisticRepository" name="Hack\Bundle\ProxyBundle\Entity\UserStatistic">
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="score" type="integer" column="score"/>
+    <field name="answersReplied" type="integer" column="answersReplied"/>
+    <field name="userLevel" type="integer" column="user_level"/>
+    <many-to-one field="userId" target-entity="User">
+      <join-column name="userId" referenced-column-name="id" />
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity repository-class="Hack\Bundle\ProxyBundle\Entity\GameRepository" name="Hack\Bundle\ProxyBundle\Entity\Game">
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="cheapestItem" type="string" column="cheapest_item" length="255"/>
+    <field name="expensiveItem" type="string" column="expensive_item" length="255"/>
+  </entity>
+</doctrine-mapping>

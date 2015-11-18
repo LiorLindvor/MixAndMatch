@@ -1,0 +1,14 @@
+<p><a href="{{ path('call_test_index') }}">Call reference</a></p>
+<h1>{{ call.apiName }} &raquo; {{ call.callName }}</h1>
+<h2>HTTP headers:</h2>
+{% for header in call.headers %}
+    {{ header }}<br/>
+{% endfor %}
+
+<h2>Input</h2>
+{{ dump(call.input) }}
+
+<h2>Output</h2>
+{% autoescape %}
+<pre>{{ output }}</pre>
+{% endautoescape %}

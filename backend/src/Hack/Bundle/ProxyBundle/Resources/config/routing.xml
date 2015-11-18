@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes xmlns="http://symfony.com/schema/routing" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+  <route id="hack_proxy_homepage" path="/">
+    <default key="_controller">HackProxyBundle:Default:index</default>
+  </route>
+  <route id="cheapest_and_expensive" path="products/get-min-max">
+    <default key="_controller">HackProxyBundle:Products:CheapestAndExpensive</default>
+  </route>
+  <route id="get_all_categories" path="categories/all">
+    <default key="_controller">HackProxyBundle:Categories:getAll</default>
+  </route>
+  <route id="top" path="/leaderboard/top">
+    <default key="_controller">HackProxyBundle:Leaderboard:top</default>
+  </route>
+  <route id="store" path="/result/store/{userId}/{itemId}/{categoryName}/{scoreIncrease}/{isLevelUp}">
+    <default key="_controller">HackProxyBundle:GameResults:store</default>
+  </route>
+  <route id="get_full_game_result" path="/result/full-game">
+    <default key="_controller">HackProxyBundle:GameResults:getFullGameResult</default>
+  </route>
+  <route id="register" path="/user/register">
+    <default key="_controller">HackProxyBundle:User:register</default>
+  </route>
+  <route id="authorize" path="/user/authorize">
+    <default key="_controller">HackProxyBundle:User:authorize</default>
+  </route>
+  <route id="get_statistics" path="/user/get-statistics/{userId}">
+    <default key="_controller">HackProxyBundle:User:getStatistics</default>
+  </route>
+</routes>
