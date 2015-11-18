@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Mix&Match - eBay hackathon</title>
+		<link rel="stylesheet" type="text/css" href="interface/css/normalize.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="interface/css/bottom-slide.css" />
+		<link rel="stylesheet" type="text/css" href="interface/css/animate.css" />
+		<link rel="stylesheet" type="text/css" href="interface/css/default.css" />
+		<script src="interface/javascript/modernizr.custom.js"></script>
+	</head>
+	<body class="skin-5">
+		<div id="scoreboard" style="display: none;">
+			<div class="container">
+				<div id="close-scoreboard">
+					<img src="interface/images/close.png" alt="clsoe">
+				</div>
+				<span>ScoreBoard</span>
+				<table>
+					<tbody>
+						<tr>
+							<td><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfa1/v/t1.0-1/p50x50/376121_548372485206020_433269342_n.jpg?oh=f12300a653745e3827725236ab440520&oe=56BA14CB&__gda__=1458730274_a984047f5bd4cfc935091279d0e3add4" alt=""></td>
+							<td>Aviv Hazor</td>
+							<td>3,125 Points</td>
+						</tr>
+						<tr id="current-user">
+							<td><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpa1/v/t1.0-1/p100x100/11218907_922414437812583_4806684886042857807_n.jpg?oh=29b70ad01601820e91633712205af199&oe=56F6EA44&__gda__=1459239929_bf2e0ba67068080c7a09366a6cfb103b" alt=""></td>
+							<td>Lior Lindvor</td>
+							<td>1,024 Points</td>
+						</tr>
+						<tr>
+							<td><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xaf1/v/t1.0-1/c0.0.100.100/p100x100/10414381_10152461247354031_1872976788040399861_n.jpg?oh=eee461b3061b0be09a4c71db948dfecb&oe=56AD4EAB&__gda__=1458784583_c227deabedb3969103f8762b070ceb2a" alt=""></td>
+							<td>Vladimir Putin</td>
+							<td>6,125 Points</td>
+						</tr>
+						<tr>
+							<td><img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xtp1/v/t1.0-1/p100x100/11219411_10206933231754769_4663121265581022065_n.jpg?oh=23ef92eb647999116ea9de5cd676df58&oe=56B241ED&__gda__=1455454773_044db4649e17473334231634b3c177eb" alt=""></td>
+							<td>Gal Hazor</td>
+							<td>18,125 Points</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div id="gameover" class="popup-design" style="display: none;">
+			<div class="container">
+				<span>Game Over</span>
+				<div class="stats">
+					<div><span>Points:</span> <span class="pointsShow"></span></div>
+					<div><span>Level:</span> <span class="levelShow"></span></div>
+				</div>
+				<a id="new-game" href="#">Start Again</a>
+			</div>
+		</div>
+		<div id="user-level-up" class="popup-design" style="display: none">
+			<div class="container">
+				<span>Level Up!</span>
+				<div class="stats">
+					<div><span>Lvl:</span> <span class="levelShow"></span></div>
+				</div>
+			</div>
+		</div>
+		<section id="home">
+		<div class="container">
+			<header>
+				<div id="logo">
+					Mix<span>&</span>Match
+				</div>
+			</header>
+			<!-- Top Navigation -->
+			<div class="content">
+				<h1>Drag the item <br /> to it׳s right category:</h1>
+				<div id="grid" class="grid clearfix">
+					<div class="grid__item" id="ebay-product"><img src="http://thumbs.ebaystatic.com/images/g/GgsAAOSwd0BV4gA7/s-l225.jpg" alt="" /></div>
+				</div>
+			</div><!-- /content -->
+		</div><!-- /container -->
+		<div id="drop-area" class="drop-area">
+			<div>
+				<div class="dummy"></div>
+					<div class="drop-area__item"><i class="fa fa-fw fa-mobile"></i> <span>Cellphones & Smartphones</span></div>
+					<div class="drop-area__item"><i class="fa fa-fw fa-headphones"></i> <span>Headsets</span></div>
+					<div class="drop-area__item"><i class="fa fa-fw  fa-play"></i> <span>Audio Docks & Speakers</span></div>
+					<div class="drop-area__item"><i class="fa fa-fw fa-file-word-o"></i> <span>Cases, Covers & Skins</span></div>
+					<div class="drop-area__item"><i class="fa fa-fw fa-power-off"></i> <span>Chargers & Cradles</span></div>
+					<div class="drop-area__item"><i class="fa fa-fw fa-battery-full"></i> <span>Batteries</span></div>
+					<div class="drop-area__item"><i class="fa fa-fw fa-file-text-o"></i> <span>Cable & Adapters</span></div>
+					<div class="drop-area__item"><i class="fa fa-fw fa-file-audio-o"></i> <span>Car Speakerphones</span></div>
+					<div class="drop-area__item"><i class="fa fa-fw fa-file-text-o"></i> <span>Mounts & Holders</span></div>
+					<div class="drop-area__item"><i class="fa fa-fw fa-file-text-o"></i> <span>Styluses</span></div>
+					<div class="drop-area__item"><i class="fa fa-fw fa-check-circle-o"></i> <span>Cellphone Accessories</span></div>
+					<div class="drop-area__item"><i class="fa fa-fw fa-question"></i> <span>WTF?</span></div>
+				</div>
+			</div>
+			<div class="drop-overlay"></div>
+			<footer>
+				<div class="pull-left">
+					<span class="pointsShow">0</span> Points
+				</div>
+				<div class="pull-right">
+					Level <span class="levelShow">1</span>
+				</div>
+			</footer>
+		</section>
+		<section id="login">
+			<header>
+				<div class="logo">
+					Mix<span>&</span>Match
+				</div>
+			</header>
+			<div id="facebook-login">
+				<a href="#!/home">Connect</a>
+			</div>
+		</section>
+		<script src="interface/javascript/draggabilly.pkgd.min.js"></script>
+		<script src="interface/javascript/dragdrop.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="interface/javascript/application.js"></script>
+	</body>
+</html>
