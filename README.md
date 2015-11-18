@@ -14,6 +14,8 @@ We're on a sacred mission to send the abusers and their sneaky product placement
 # How it works
 Our fancypants algorithm identifies products that are most likely intentionally placed in the wrong category, and gives the player the final word on which category the product really belongs into.
 
+In case a player picks the wrong category for a product and our algorithm detects a pattern emerge, it will show up for a higher amount of players and have them pick the correct category in order to be as certain as possible.
+
 # The benefit
 Based upon player results, our database is automatically populated with the correct product-to-category relationship.
 
