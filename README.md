@@ -1,6 +1,6 @@
 # Mix&Match
-Team 6 - Hackgeny + eBay hackathon. <br />
-Eliminating the trouble of product category mismatch on eBay with a fun & challenging game.
+Eliminating the trouble of product category mismatch on eBay with a fun & challenging game. <br />
+Team 6 - Hackgeny + eBay hackathon.
 
 # THE PROBLEM: CATEGORY MISMATCH
 Ever wondered how come you find yourself looking at sparkling new 'Straight Outta China' iPhone Cases while searching for a Lakers Jersey on eBay?
