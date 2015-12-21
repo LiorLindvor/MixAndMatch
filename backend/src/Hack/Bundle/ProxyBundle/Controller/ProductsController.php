@@ -26,20 +26,17 @@ class ProductsController extends FOSRestController
 
     public function CheapestAndExpensiveAction()
     {
-/*        $result = array(
-            'min' => $this->bringItem(true),
-            'max' => $this->bringItem(),
-        );
-*/
-        $view = $this->view($this->bringItem(true), 200)->setFormat("json");
+        $result = array_merge($this->bringItem(true),$this->bringItem());
+        shuffle($result);
 
+        $view = $this->view(array( "min" => $result), 200)->setFormat("json");
         return $this->get('fos_rest.view_handler')->handle($view);
     }
 
     protected function bringItem($isCheapest = false)
     {
         $api = 'Finding';
-        $callName = 'findItemsAdvanced';
+        $callName = 'findItemsAdvanced'; //'findItemsAdvanced';
         $order = $isCheapest === false ? 'PricePlusShippingHighest' : 'PricePlusShippingLowest';
 
         $ebay = $this->get('web_consul_ebay_api.main');
@@ -52,15 +49,15 @@ class ProductsController extends FOSRestController
 
         //$categoriesAmount = count($this->_availableCategories);
         //$categoryName = $this->_availableCategories[rand(1, $categoriesAmount)-1];
-        $categoryName = 'Cell Phones & Accessories';
+        $categoryName = '15032'; //'Cell Phones & Accessories';
         $itemFilterStack = [];
         $item = new ItemFilter();
         $item->setParamName('listingType')->setParamValue('FixedPrice');
         $itemFilterStack[] = $item;
 
         $call->setCategoryId($categoryName);
-        $call->setDescriptionSearch(true);
-        $call->setKeywords('phone'); // @todo : what we do with keyword???
+        //$call->setDescriptionSearch(true);
+        $call->setKeywords('iphone'); // @todo : what we do with keyword???
         $call->setSortOrder($order);
         $call->setPaginationInput($pagination);
         $call->setItemFilter($itemFilterStack);
@@ -69,7 +66,6 @@ class ProductsController extends FOSRestController
         $output = $service->getResponse($call);
 
         $xml = simplexml_load_string($output);
-        $output = null;
         $xml = json_decode(json_encode((array)$xml), TRUE);
 
         if(!isset($xml['searchResult'])) {
