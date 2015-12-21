@@ -4,9 +4,14 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Mix&Match - eBay hackathon</title>
+		<title>Drag and Drop Interaction Ideas | Bottom Slide</title>
+		<meta name="description" content="Inspiration for drag and drop interactions for the modern UI" />
+		<meta name="keywords" content="drag and drop, interaction, inspiration, web design, ui" />
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico">
 		<link rel="stylesheet" type="text/css" href="interface/css/normalize.css" />
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="interface/css/demo.css" />
 		<link rel="stylesheet" type="text/css" href="interface/css/bottom-slide.css" />
 		<link rel="stylesheet" type="text/css" href="interface/css/animate.css" />
 		<link rel="stylesheet" type="text/css" href="interface/css/default.css" />
@@ -58,14 +63,18 @@
 		<div id="user-level-up" class="popup-design" style="display: none">
 			<div class="container">
 				<span>Level Up!</span>
+				<img src="https://d13yacurqjgara.cloudfront.net/users/218750/screenshots/1933555/ey-macarena.gif" alt="" />
 				<div class="stats">
 					<div><span>Lvl:</span> <span class="levelShow"></span></div>
 				</div>
 			</div>
 		</div>
-		<section id="home">
+		<section id="home" style="display: none">
 		<div class="container">
 			<header>
+				<div id="header-nav">
+					<img src="interface/images/settings.png" alt="" />
+				</div>
 				<div id="logo">
 					Mix<span>&</span>Match
 				</div>
@@ -81,18 +90,17 @@
 		<div id="drop-area" class="drop-area">
 			<div>
 				<div class="dummy"></div>
-					<div class="drop-area__item"><i class="fa fa-fw fa-mobile"></i> <span>Cellphones & Smartphones</span></div>
-					<div class="drop-area__item"><i class="fa fa-fw fa-headphones"></i> <span>Headsets</span></div>
-					<div class="drop-area__item"><i class="fa fa-fw  fa-play"></i> <span>Audio Docks & Speakers</span></div>
-					<div class="drop-area__item"><i class="fa fa-fw fa-file-word-o"></i> <span>Cases, Covers & Skins</span></div>
-					<div class="drop-area__item"><i class="fa fa-fw fa-power-off"></i> <span>Chargers & Cradles</span></div>
-					<div class="drop-area__item"><i class="fa fa-fw fa-battery-full"></i> <span>Batteries</span></div>
-					<div class="drop-area__item"><i class="fa fa-fw fa-file-text-o"></i> <span>Cable & Adapters</span></div>
-					<div class="drop-area__item"><i class="fa fa-fw fa-file-audio-o"></i> <span>Car Speakerphones</span></div>
-					<div class="drop-area__item"><i class="fa fa-fw fa-file-text-o"></i> <span>Mounts & Holders</span></div>
-					<div class="drop-area__item"><i class="fa fa-fw fa-file-text-o"></i> <span>Styluses</span></div>
-					<div class="drop-area__item"><i class="fa fa-fw fa-check-circle-o"></i> <span>Cellphone Accessories</span></div>
-					<div class="drop-area__item"><i class="fa fa-fw fa-question"></i> <span>WTF?</span></div>
+					<div class="drop-area__item" data-name="Cell Phones & Smartphones"><i class="fa fa-fw fa-mobile"></i> <span>Cellphones & Smartphones</span></div>
+					<div class="drop-area__item" data-name="Headsets"><i class="fa fa-fw fa-headphones"></i> <span>Headsets</span></div>
+					<div class="drop-area__item" data-name="Audio Docks & Speakers"><i class="fa fa-fw  fa-play"></i> <span>Audio Docks & Speakers</span></div>
+					<div class="drop-area__item" data-name="Cases, Covers & Skins"><i class="fa fa-fw fa-file-word-o"></i> <span>Cases, Covers & Skins</span></div>
+					<div class="drop-area__item" data-name="Chargers & Cradles"><i class="fa fa-fw fa-power-off"></i> <span>Chargers & Cradles</span></div>
+					<div class="drop-area__item" data-name="Batteries"><i class="fa fa-fw fa-battery-full"></i> <span>Batteries</span></div>
+					<div class="drop-area__item" data-name="Cable & Adapters"><i class="fa fa-fw fa-file-text-o"></i> <span>Cable & Adapters</span></div>
+					<div class="drop-area__item" data-name="Mounts & Holders"><i class="fa fa-fw fa-file-text-o"></i> <span>Mounts & Holders</span></div>
+					<div class="drop-area__item" data-name="Styluses"><i class="fa fa-fw fa-file-text-o"></i> <span>Styluses</span></div>
+					<div class="drop-area__item" data-name="Cellphone Accessories"><i class="fa fa-fw fa-check-circle-o"></i> <span>Cellphone Accessories</span></div>
+					<div class="drop-area__item" data-name="WTF?"><i class="fa fa-fw fa-question"></i> <span>WTF?</span></div>
 				</div>
 			</div>
 			<div class="drop-overlay"></div>
@@ -105,18 +113,19 @@
 				</div>
 			</footer>
 		</section>
-		<section id="login">
+		<section id="login" style="display: block;">
 			<header>
 				<div class="logo">
 					Mix<span>&</span>Match
 				</div>
 			</header>
 			<div id="facebook-login">
-				<a href="#!/home">Connect</a>
+				<button type="button" class="progress-button" data-style="flip-open" data-perspective data-horizontal>Connect</button>
 			</div>
 		</section>
 		<script src="interface/javascript/draggabilly.pkgd.min.js"></script>
 		<script src="interface/javascript/dragdrop.js"></script>
+		<script src="interface/javascript/progressButton.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<script src="interface/javascript/application.js"></script>
 	</body>

@@ -6,8 +6,6 @@ var eBay = eBay || {};
  * create: make new section inside the factory.
  * run   : run a section inside the factory.
  *
- * Author   Lior Lindvor
- * Hackgeny + eBay hackathon.
  **/
 
 eBay.factory = ( function ( $ )
@@ -141,6 +139,7 @@ eBay.factory.create( "home", ( function ( $ )
     return {
         init: function ()
         {
+
             /*if( !eBay.factory.localStorage( "login" ) )
                 App.openPage("login");*/
             var body = document.body,
@@ -158,10 +157,18 @@ eBay.factory.create( "home", ( function ( $ )
                     {
                         var products = eBay.factory.storage("products");
                         eBay.factory.storage("product", (Number(eBay.factory.storage("product"))+1)); // Choose current product.
+                        console.log(products[ eBay.factory.storage("product") ] [ "category" ] ); 
+                        
+                        //-----------------------
+                        // Save user Category
+                        //-----------------------
+                        products[ eBay.factory.storage("product") ] [ "userCategory" ] = instance.el.getAttribute("data-name");
+                        eBay.factory.storage("products",products);
+                        
                         //--------------------------------------------
                         // is user choosed  the right category?
                         //---------------------------------------------
-                        if( products[ eBay.factory.storage("product") ] [ "category" ] == instance.el.innerText.replace(" ","") )
+                        if( products[ eBay.factory.storage("product") ] [ "category" ] == instance.el.getAttribute("data-name") )
                         {
                             //---------------------------------------------
                             // show checkmark inside the droppabe element
@@ -181,10 +188,10 @@ eBay.factory.create( "home", ( function ( $ )
                             // Refresh points.
                             //------------------
                             $(".pointsShow").html( eBay.factory.storage("points") );
-                            $(".pointsShow").parent().addClass("animated teda").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function()
-                            {
-                                $( this ).removeClass("animated teda");
-                            });
+                            //$(".pointsShow").parent().addClass("animated teda").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function()
+                            //{
+                            //    $( this ).removeClass("animated teda");
+                            //});
 
                             //------------------------------------------
                             // If user is right 3 times -> go up level
@@ -236,6 +243,10 @@ eBay.factory.create( "home", ( function ( $ )
                                 {
                                     $( this ).removeClass("animated lightSpeedIn");
 
+                                    //--------------------
+                                    // Send resulats.
+                                    //--------------------
+
                                     $("#new-game").click( function()
                                     {
                                         setTimeout( function()
@@ -258,9 +269,9 @@ eBay.factory.create( "home", ( function ( $ )
                         function goNext()
                         {
                             clearTimeout( instance.checkmarkTimeout );
-                            instance.checkmarkTimeout = setTimeout( function() { 
-                            classie.remove( instance.el, 'drop-feedback' );
-                                 $("#ebay-product").attr("style","position: relative").addClass("bounceOutLeft animated").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function()
+                            instance.checkmarkTimeout = setTimeout( function() {
+                                classie.remove( instance.el, 'drop-feedback' );
+                                $("#ebay-product").attr("style","position: relative").addClass("bounceOutLeft animated").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function()
                                 {
                                      $(this).removeClass("bounceOutLeft animated");
                                      var $this = $( this );
@@ -350,8 +361,26 @@ eBay.factory.create( "login", ( function ( $ )
     return {
         init: function ()
         {
-            /*if( eBay.factory.localStorage( "login" ) )
-                App.openPage("home");*/
+            $("body").addClass("white");
+
+            [].slice.call( document.querySelectorAll( 'button.progress-button' ) ).forEach( function( bttn ) {
+                new ProgressButton( bttn, {
+                    callback : function( instance ) {
+                        var progress = 0,
+                        interval = setInterval( function() {
+                            progress = Math.min( progress + Math.random() * 0.1, 1 );
+                            instance._setProgress( progress );
+
+                            if( progress === 1 ) {
+                                instance._stop(1);
+                                clearInterval( interval );
+                                App.openPage("home");
+                                $("body").removeClass("white");
+                            }
+                        }, 650 );
+                    }
+                } );
+            } );
         }
     }
 }(jQuery)));
@@ -504,12 +533,20 @@ eBay.factory.create( "App", ( function ( $ )
             {
 
                 $.each( callback["min"], function( key, val ){
+                    console.log( val[ "primaryCategory" ][ "categoryName" ] );
                     products[ key ] = { 
-                        "caetgory": val[ "primaryCategory" ][ "categoryName" ],
+                        "category": val[ "primaryCategory" ][ "categoryName" ],
                         "img"     : val[ "galleryURL" ],
-                        "itemId"  : val[ "itemId" ]
+                        "itemId"  : val[ "itemId" ],
+                        "userCategory": "",
                     };
                 });
+
+                $("#header-nav").click( function()
+                {
+                    $("#scoreboard").slideDown();
+                });
+
                 
                 /*$.each( callback["max"], function( key, val ){
                     products[ key ] = { 
@@ -528,7 +565,7 @@ eBay.factory.create( "App", ( function ( $ )
                 
                 $("#ebay-product img").attr("src",products[ "0" ][ "img" ] );
 
-                $("#ebay-product").css("marginTop", ( ( $( "#grid" ).height()/2 ) - 37 ) );
+                //$("#ebay-product").css("marginTop", ( ( $( "#grid" ).height()/2 ) - 37 ) );
                 
                 eBay.factory.storage("products", products);
             });
@@ -541,7 +578,7 @@ eBay.factory.create( "App", ( function ( $ )
 
             if( !eBay.factory.storage("currentPage") )
             {
-                Page.open("home");
+                Page.open("login");
             }
             return this;
         },
